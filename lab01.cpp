@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -53,7 +53,7 @@ enum TokenCode{
 	TK_BEGIN,	//{左大括号
 	TK_END,		//}右大括号
 	TK_COMMA,	//,逗号
-	TK_SEMOCOLOM,	//;分号
+	TK_SEMICOLOM,	//;分号
 	
 	/* 常量 */
 	TK_INT,		//整型常量
@@ -78,9 +78,8 @@ void print(TokenCode code){
     switch(code){
         /* 未定义 */
         case TK_UNDEF:
-            cout<<'('<<code<<','<<token<<')'<<"未识别的符号在第"<<row<<"行"<<endl;
+            cout<<'('<<code<<','<<token<<')'<<endl;
             return;
-            break;
         /* 关键字 */
         case KW_VOID:
         case KW_MAIN:
@@ -114,7 +113,7 @@ void print(TokenCode code){
         case TK_BEGIN:
         case TK_END:
         case TK_COMMA:
-        case TK_SEMOCOLOM:
+        case TK_SEMICOLOM:
             break;
         /* 常量 */
         case TK_INT:
@@ -164,7 +163,7 @@ int getKeyWordCode(string token){
 /* 词法分析 */
 void lexicalAnalysis(FILE *fp){     // 文件指针参数  
     char ch;
-    while((ch=fgetc(fp)!=EOF)){
+    while((ch=fgetc(fp))!=EOF){
         token=ch;
         if(ch==' '||ch=='\t'||ch=='\n'){    // 忽略空格 Tab 和回车
             if(ch=='\n'){
@@ -284,7 +283,7 @@ void lexicalAnalysis(FILE *fp){     // 文件指针参数
                 code=TK_COMMA;
                 break;
             case ';':
-                code=TK_SEMOCOLOM;
+                code=TK_SEMICOLOM;
                 break;
             default:
                 code=TK_UNDEF;
@@ -296,16 +295,16 @@ void lexicalAnalysis(FILE *fp){     // 文件指针参数
 int main(){
     string filename;
     FILE* fp;
-    cout<<"请输入文件名："<<endl;
+    cout<<"Please input the filename: "<<endl;
     while(true){
         cin>>filename;
         if((fopen_s(&fp,filename.c_str(),"r"))==0)
             break;
         else
-            cout<<"文件不存在！请重新输入文件名："<<endl;
+            cout<<"File does not exist! Please re-enter the filename:"<<endl;
     }
 
-    cout<<"词法分析结果："<<endl;
+    cout<<"Lexical analysis results: "<<endl;
     lexicalAnalysis(fp);
     fclose(fp);
     return 0;
