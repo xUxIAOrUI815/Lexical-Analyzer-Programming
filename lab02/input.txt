@@ -1,0 +1,21 @@
+int main() {
+    int a;
+    int b;
+    double result;
+
+    a = 10;
+    b = 5;
+
+    result = a + b * 3;
+
+    if (result > 20) {
+        a = a - 1;
+    }
+
+    while (b > 0) {
+        b = b - 1;
+        result = result + 1.5;
+    }
+
+    return 0;
+}
