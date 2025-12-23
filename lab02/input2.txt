@@ -1,0 +1,11 @@
+int main ( ) {
+    int a;
+    a = 3.14.5;         
+                       
+    if (a == = 10)      
+                            
+    while (a < 10) {    
+        a = a + +;      
+    }
+    return 0
+}                     

@@ -154,7 +154,7 @@ void parseProgram() {
 }
 
 int main() {
-    if (!initLexer("input.txt")) {
+    if (!initLexer("input2.txt")) {
         cout << "Error: Cannot open input.txt" << endl;
         return 1;
     }
