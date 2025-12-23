@@ -33,8 +33,7 @@ int getKeyWordCode(string token) {
 }
 
 bool initLexer(const char* filename) {
-    // 使用 fopen_s (Visual Studio) 或 fopen (Standard)
-    // 这里为了兼容你的 Lab1 使用 fopen_s
+    // 使用 fopen_s
     if (fopen_s(&fp, filename, "r") != 0) {
         return false;
     }
@@ -108,7 +107,7 @@ Token getNextToken() {
                     tempStr.push_back(ch); // push '.'
                     ch = nextCh; // ch becomes the digit after dot
                 } else {
-                    // 如果小数点后不是数字，回退 (比如 1. 这种情况的处理，视具体需求而定)
+                    // 如果小数点后不是数字，回退
                     fseek(fp, -1L, SEEK_CUR); 
                 }
             }

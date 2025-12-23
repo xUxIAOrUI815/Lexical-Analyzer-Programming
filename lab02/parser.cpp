@@ -38,7 +38,7 @@ void parseStatementList(int depth);
 void parseStatement(int depth);
 void parseExpression(int depth);
 
-// 1. 解析表达式 (简化版：只处理简单的运算)
+// 1. 解析表达式 
 void parseExpression(int depth) {
     printTree("Expression", depth);
     
