@@ -191,7 +191,7 @@ void lexicalAnalysis(FILE *fp){     // 文件指针参数
             token="";
             while(isDigit(ch)){     // 当前获取的字符为数字
                 token.push_back(ch);    // 读取数字
-                ch=fgetc(fp);
+                ch=fgetc(fp);       // fgetc 一次只读一个字节
                 if(ch=='.'&& isdouble==0){
 
                     // 小数点下一位是数字
